@@ -26,9 +26,8 @@ export default function MailPage() {
             "react-resizable-panels:collapsed"
         )
         if (collapsedCookieValue) {
-            const parsedCollapsed = collapsedCookieValue === "true" 
+            const parsedCollapsed = collapsedCookieValue === "true"
             setDefaultCollapsed(parsedCollapsed)
-            console.log("Collapsed cookie value:", parsedCollapsed)
         }
 
         const layoutCookieValue = getCookieValue(
@@ -37,7 +36,6 @@ export default function MailPage() {
         if (layoutCookieValue) {
             const parsedLayout = JSON.parse(layoutCookieValue) as number[]
             setDefaultLayout(parsedLayout)
-            console.log("Layout cookie value:", parsedLayout)
         }
     }, [])
 
