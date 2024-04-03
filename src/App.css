@@ -1,5 +1,5 @@
 #root {
-    max-width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
@@ -29,12 +29,12 @@
 }
 
 @font-face {
-    font-family: "CustomFont";
-    src: url("/fonts/Geist-Regular.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
+    font-family: "Geist-Sans";
+    src: url("../public/fonts/ec1a1eae803b668e-s.p.woff2") format("woff2");
+    font-display: swap;
+    font-weight: 100 900;
 }
 
 body {
-    font-family: "CustomFont";
+    font-family: "Geist-Sans";
 }
