@@ -1,15 +1,49 @@
-import { useState } from "react"
-
+import { useState, useEffect } from "react"
 import { Mail } from "@/components/mail/Mail"
 import { accounts, mails } from "@/components/mail/data"
 
 export default function MailPage() {
-    const [defaultLayout] = useState(undefined)
-    const [defaultCollapsed] = useState(undefined)
+    const [defaultLayout, setDefaultLayout] = useState<number[] | undefined>(
+        undefined
+    )
+    const [defaultCollapsed, setDefaultCollapsed] = useState<
+        boolean | undefined
+    >(undefined)
+
+    useEffect(() => {
+        const getCookieValue = (cookieName: string) => {
+            const cookies = document.cookie.split(";")
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim()
+                if (cookie.startsWith(cookieName + "=")) {
+                    return cookie.substring(cookieName.length + 1)
+                }
+            }
+            return null
+        }
+
+        const collapsedCookieValue = getCookieValue(
+            "react-resizable-panels:collapsed"
+        )
+        if (collapsedCookieValue) {
+            const parsedCollapsed = collapsedCookieValue === "true" 
+            setDefaultCollapsed(parsedCollapsed)
+            console.log("Collapsed cookie value:", parsedCollapsed)
+        }
+
+        const layoutCookieValue = getCookieValue(
+            "react-resizable-panels:layout"
+        )
+        if (layoutCookieValue) {
+            const parsedLayout = JSON.parse(layoutCookieValue) as number[]
+            setDefaultLayout(parsedLayout)
+            console.log("Layout cookie value:", parsedLayout)
+        }
+    }, [])
 
     return (
         <>
-            <div className=" flex-col md:flex h-full border p-1 rounded-lg">
+            <div className="flex-col md:flex h-full border p-1 rounded-lg">
                 <Mail
                     accounts={accounts}
                     mails={mails}
