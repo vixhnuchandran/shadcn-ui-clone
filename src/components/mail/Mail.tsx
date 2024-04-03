@@ -63,12 +63,12 @@ export function Mail({
                         sizes
                     )}`
                 }}
-                className="h-full max-h-[800px] items-stretch"
+                className="h-full max-h-[860px] items-stretch"
             >
                 <ResizablePanel
                     defaultSize={defaultLayout[0]}
                     collapsedSize={navCollapsedSize}
-                    collapsible={true}
+                    collapsible={defaultCollapsed}
                     minSize={15}
                     maxSize={20}
                     // onCollapse={(
@@ -80,8 +80,8 @@ export function Mail({
                     //     )}`
                     // }}
                     className={cn(
-                        isCollapsed &&
-                            "min-w-[50px] transition-all duration-300 ease-in-out"
+                        true &&
+                            "min-w-[20px] transition-all duration-300 ease-in-out"
                     )}
                 >
                     <div
@@ -175,6 +175,7 @@ export function Mail({
                     />
                 </ResizablePanel>
                 <ResizableHandle withHandle />
+
                 <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
                     <Tabs defaultValue="all">
                         <div className="flex items-center px-4 py-2">
@@ -217,6 +218,7 @@ export function Mail({
                     </Tabs>
                 </ResizablePanel>
                 <ResizableHandle withHandle />
+
                 <ResizablePanel defaultSize={defaultLayout[2]}>
                     <MailDisplay
                         mail={
