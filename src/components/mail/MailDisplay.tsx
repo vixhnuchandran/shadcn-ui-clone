@@ -267,7 +267,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                                 <div className="line-clamp-1 text-xs">
                                     <span className="font-medium">
                                         Reply-To:
-                                    </span>{" "}
+                                    </span>
                                     {mail.email}
                                 </div>
                             </div>
