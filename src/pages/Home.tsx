@@ -41,7 +41,7 @@ export default function MailPage() {
 
     return (
         <>
-            <div className="flex-col md:flex h-full border p-1 rounded-lg">
+            <div className="flex-col md:flex h-full border rounded-lg">
                 <Mail
                     accounts={accounts}
                     mails={mails}
