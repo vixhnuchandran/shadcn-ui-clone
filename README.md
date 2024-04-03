@@ -1,7 +1,5 @@
 # SHADCN-EMAIL-UI
 
-## Description
-
 SHADCN-EMAIL-UI is a React component that is a clone of the email interface example provided in the SHADCN UI site. It allows for easy integration of this email interface into your React applications.
 
 ## Installation
