@@ -51,7 +51,7 @@ export function Mail({
     defaultCollapsed = false,
     navCollapsedSize,
 }: MailProps) {
-    const [isCollapsed] = React.useState(defaultCollapsed)
+    const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed)
     const [mail] = useMail()
 
     return (
@@ -63,24 +63,28 @@ export function Mail({
                         sizes
                     )}`
                 }}
-                className="h-full max-h-[850px] items-stretch"
+                className="h-full max-h-[850px] items-stretch "
             >
                 <ResizablePanel
                     defaultSize={defaultLayout[0]}
                     collapsedSize={navCollapsedSize}
-                    collapsible={defaultCollapsed}
+                    collapsible={true}
                     minSize={15}
                     maxSize={20}
-                    // onCollapse={(
-                    //     collapsed: boolean | ((prevState: boolean) => boolean)
-                    // ) => {
-                    //     setIsCollapsed(collapsed)
-                    //     document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-                    //         collapsed
-                    //     )}`
-                    // }}
+                    onCollapse={() => {
+                        setIsCollapsed(true)
+                        document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
+                            true
+                        )}`
+                    }}
+                    onExpand={() => {
+                        setIsCollapsed(false)
+                        document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
+                            false
+                        )}`
+                    }}
                     className={cn(
-                        true &&
+                        isCollapsed &&
                             "min-w-[20px] transition-all duration-300 ease-in-out"
                     )}
                 >
