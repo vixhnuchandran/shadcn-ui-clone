@@ -249,7 +249,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
             {mail ? (
                 <div className="flex flex-1 flex-col">
                     <div className="flex items-start p-4">
-                        <div className="flex items-start gap-4 text-sm">
+                        <div className="flex justify-end items-start gap-4 text-sm">
                             <Avatar>
                                 <AvatarImage alt={mail.name} />
                                 <AvatarFallback>
@@ -259,7 +259,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                                         .join("")}
                                 </AvatarFallback>
                             </Avatar>
-                            <div className="grid gap-1">
+                            <div className="grid gap-1 text-left">
                                 <div className="font-semibold">{mail.name}</div>
                                 <div className="line-clamp-1 text-xs">
                                     {mail.subject}
