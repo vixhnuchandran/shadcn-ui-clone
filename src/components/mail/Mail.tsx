@@ -90,7 +90,7 @@ export function Mail({
                 >
                     <div
                         className={cn(
-                            "flex h-[52px] items-center justify-center",
+                            "flex h-[52px] items-center justify-center ",
                             isCollapsed ? "h-[52px]" : "px-2"
                         )}
                     >
