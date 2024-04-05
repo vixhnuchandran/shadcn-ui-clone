@@ -66,6 +66,11 @@ export function Nav({ links, isCollapsed }: NavProps) {
                         <Link
                             key={index}
                             to="#"
+                            onClick={e => {
+                                if (e.ctrlKey) {
+                                    e.preventDefault()
+                                }
+                            }}
                             className={cn(
                                 buttonVariants({
                                     variant: link.variant,
