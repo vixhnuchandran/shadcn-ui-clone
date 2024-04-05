@@ -90,8 +90,8 @@ export function Mail({
                 >
                     <div
                         className={cn(
-                            "flex h-[52px] items-center justify-center ",
-                            isCollapsed ? "h-[52px]" : "px-2"
+                            "flex h-[56px] items-center justify-center ",
+                            isCollapsed ? "h-[56px]" : "px-2"
                         )}
                     >
                         <AccountSwitcher
