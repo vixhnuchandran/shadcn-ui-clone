@@ -39,13 +39,14 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Mail } from "@/components/mail/data"
+import { MyMail } from "@/components/mail/data"
 
 interface MailDisplayProps {
-    mail: Mail | null
+    mail: MyMail | null
+    viewPort?: string
 }
 
-export function MailDisplay({ mail }: MailDisplayProps) {
+export function MailDisplay({ mail, viewPort }: MailDisplayProps) {
     const today = new Date()
 
     return (
@@ -240,9 +241,11 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                         <DropdownMenuItem>Mute thread</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <div className="ml-4">
-                    <ModeToggle />
-                </div>
+                {viewPort !== "mobile" && (
+                    <div className="ml-4">
+                        <ModeToggle />
+                    </div>
+                )}
             </div>
 
             <Separator />
