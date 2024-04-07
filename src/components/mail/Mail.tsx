@@ -30,11 +30,10 @@ import { AccountSwitcher } from "@/components/mail/AccountSwitcher"
 import { MailDisplay } from "@/components/mail/MailDisplay"
 import { MailList } from "@/components/mail/MailList"
 import { Nav } from "@/components/mail/Nav"
-import { type Mail } from "@/components/mail/data"
+import { type MyMail } from "@/components/mail/data"
 import { useMail } from "@/components/mail/use-mail"
 import { useWindowWidth } from "@react-hook/window-size"
 import { MobileLayout } from "./MobileLayout"
-import { Drawer as DrawerPrimitive } from "vaul"
 
 interface MailProps {
     accounts: {
@@ -42,7 +41,7 @@ interface MailProps {
         email: string
         icon: React.ReactNode
     }[]
-    mails: Mail[]
+    mails: MyMail[]
     defaultLayout: number[] | undefined
     defaultCollapsed?: boolean
     navCollapsedSize: number
