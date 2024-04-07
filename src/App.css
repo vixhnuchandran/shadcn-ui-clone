@@ -1,7 +1,8 @@
 #root {
-    max-width: 100%;
+    max-height: max-content;
+    max-width: max-content;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2px;
     text-align: center;
 }
 
@@ -30,7 +31,7 @@
 
 @font-face {
     font-family: "Geist-Sans";
-    src: url("../public/fonts/ec1a1eae803b668e-s.p.woff2") format("woff2");
+    src: url("/fonts/ec1a1eae803b668e-s.p.woff2") format("woff2");
     font-display: swap;
     font-weight: 100 900;
 }
