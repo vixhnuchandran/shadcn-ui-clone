@@ -128,7 +128,7 @@ export function MailDisplay({ mail, viewPort }: MailDisplayProps) {
                                                 variant="ghost"
                                                 className="justify-start font-normal"
                                             >
-                                                Later today{" "}
+                                                Later today
                                                 <span className="ml-auto text-muted-foreground">
                                                     {format(
                                                         addHours(today, 4),
@@ -301,7 +301,7 @@ export function MailDisplay({ mail, viewPort }: MailDisplayProps) {
                                         <Switch
                                             id="mute"
                                             aria-label="Mute thread"
-                                        />{" "}
+                                        />
                                         Mute this thread
                                     </Label>
                                     <Button
