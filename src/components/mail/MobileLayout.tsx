@@ -77,110 +77,14 @@ export function MobileLayout({ accounts, mails }: MailProps) {
                         sizes
                     )}`
                 }}
-                className="h-1080 max-h-[850px]"
+                className="max-h-auto"
             >
-                <ResizablePanel
-                    defaultSize={265}
-                    collapsedSize={35}
-                    collapsible={isCollapsed}
-                    minSize={15}
-                    maxSize={20}
-                    className="transition-all duration-300 ease-in-out md:text-3xl hidden"
-                >
-                    <div className="flex h-[56px] items-center justify-center">
-                        <AccountSwitcher
-                            isCollapsed={isCollapsed}
-                            accounts={accounts}
-                        />
-                    </div>
-                    <Separator />
-                    <Nav
-                        isCollapsed={isCollapsed}
-                        links={[
-                            {
-                                title: "Inbox",
-                                label: "128",
-                                icon: Inbox,
-                                variant: "default",
-                            },
-                            {
-                                title: "Drafts",
-                                label: "9",
-                                icon: File,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Sent",
-                                label: "",
-                                icon: Send,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Junk",
-                                label: "23",
-                                icon: ArchiveX,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Trash",
-                                label: "",
-                                icon: Trash2,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Archive",
-                                label: "",
-                                icon: Archive,
-                                variant: "ghost",
-                            },
-                        ]}
-                    />
-                    <Separator />
-                    <Nav
-                        isCollapsed={isCollapsed}
-                        links={[
-                            {
-                                title: "Social",
-                                label: "972",
-                                icon: Users2,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Updates",
-                                label: "342",
-                                icon: AlertCircle,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Forums",
-                                label: "128",
-                                icon: MessagesSquare,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Shopping",
-                                label: "8",
-                                icon: ShoppingCart,
-                                variant: "ghost",
-                            },
-                            {
-                                title: "Promotions",
-                                label: "21",
-                                icon: Archive,
-                                variant: "ghost",
-                            },
-                        ]}
-                    />
-                </ResizablePanel>
                 <ResizableHandle />
 
                 <ResizablePanel defaultSize={440} minSize={30}>
                     <Tabs defaultValue="all">
                         <div className="flex items-center px-4 py-2">
-                            <div
-                                className="cursor-pointer"
-                                onClick={toggleMenuBar}
-                            >
+                            <div className="flex" onClick={toggleMenuBar}>
                                 <Sheet>
                                     <SheetTrigger>
                                         <div
@@ -203,7 +107,7 @@ export function MobileLayout({ accounts, mails }: MailProps) {
                                                 </div>
                                             </SheetTitle>
                                         </SheetHeader>
-                                        <div className="content-area">
+                                        <div className="content-area flex-col justify-center items-center">
                                             <AccountSwitcher
                                                 isCollapsed={false}
                                                 accounts={accounts}
@@ -334,13 +238,14 @@ export function MobileLayout({ accounts, mails }: MailProps) {
                     </Tabs>
                     <Separator />
 
-                    <MailDisplay
-                        mail={
-                            mails.find(item => item.id === mail.selected) ||
-                            null
-                        }
-                        viewPort="mobile"
-                    />
+                    <ResizablePanel>
+                        <MailDisplay
+                            mail={
+                                mails.find(item => item.id === mail.selected) ||
+                                null
+                            }
+                        />
+                    </ResizablePanel>
                 </ResizablePanel>
             </ResizablePanelGroup>
         </TooltipProvider>
