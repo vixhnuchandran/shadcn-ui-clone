@@ -1,8 +1,9 @@
+"use client"
+
 import { addDays } from "date-fns/addDays"
 import { addHours } from "date-fns/addHours"
 import { format } from "date-fns/format"
 import { nextSaturday } from "date-fns/nextSaturday"
-import { ModeToggle } from "@/components/mode-toggle"
 import {
     Archive,
     ArchiveX,
@@ -39,7 +40,7 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { MyMail } from "@/components/mail/data"
+import { MyMail } from "@/components/Mail/data"
 
 interface MailDisplayProps {
     mail: MyMail | null
@@ -118,62 +119,71 @@ export function MailDisplay({ mail, viewPort }: MailDisplayProps) {
                                         </Button>
                                     </TooltipTrigger>
                                 </PopoverTrigger>
-                                <PopoverContent className="flex w-[535px] p-0">
-                                    <div className="flex flex-col gap-2 border-r px-2 py-4">
-                                        <div className="px-4 text-sm font-medium">
-                                            Snooze until
+
+                                <PopoverContent
+                                    className={`flex ${
+                                        viewPort == "mobile"
+                                            ? "w-[290px]"
+                                            : "w-[560px]"
+                                    } p-0`}
+                                >
+                                    {viewPort != "mobile" && (
+                                        <div className="flex flex-col gap-2 border-r px-2 py-4">
+                                            <div className="px-4 text-sm font-medium">
+                                                Snooze until
+                                            </div>
+                                            <div className="grid min-w-[250px] gap-1">
+                                                <Button
+                                                    variant="ghost"
+                                                    className="justify-start font-normal"
+                                                >
+                                                    Later today
+                                                    <span className="ml-auto text-muted-foreground">
+                                                        {format(
+                                                            addHours(today, 4),
+                                                            "E, h:m b"
+                                                        )}
+                                                    </span>
+                                                </Button>
+                                                <Button
+                                                    variant="ghost"
+                                                    className="justify-start font-normal"
+                                                >
+                                                    Tomorrow
+                                                    <span className="ml-auto text-muted-foreground">
+                                                        {format(
+                                                            addDays(today, 1),
+                                                            "E, h:m b"
+                                                        )}
+                                                    </span>
+                                                </Button>
+                                                <Button
+                                                    variant="ghost"
+                                                    className="justify-start font-normal"
+                                                >
+                                                    This weekend
+                                                    <span className="ml-auto text-muted-foreground">
+                                                        {format(
+                                                            nextSaturday(today),
+                                                            "E, h:m b"
+                                                        )}
+                                                    </span>
+                                                </Button>
+                                                <Button
+                                                    variant="ghost"
+                                                    className="justify-start font-normal"
+                                                >
+                                                    Next week
+                                                    <span className="ml-auto text-muted-foreground">
+                                                        {format(
+                                                            addDays(today, 7),
+                                                            "E, h:m b"
+                                                        )}
+                                                    </span>
+                                                </Button>
+                                            </div>
                                         </div>
-                                        <div className="grid min-w-[250px] gap-1">
-                                            <Button
-                                                variant="ghost"
-                                                className="justify-start font-normal"
-                                            >
-                                                Later today
-                                                <span className="ml-auto text-muted-foreground">
-                                                    {format(
-                                                        addHours(today, 4),
-                                                        "E, h:m b"
-                                                    )}
-                                                </span>
-                                            </Button>
-                                            <Button
-                                                variant="ghost"
-                                                className="justify-start font-normal"
-                                            >
-                                                Tomorrow
-                                                <span className="ml-auto text-muted-foreground">
-                                                    {format(
-                                                        addDays(today, 1),
-                                                        "E, h:m b"
-                                                    )}
-                                                </span>
-                                            </Button>
-                                            <Button
-                                                variant="ghost"
-                                                className="justify-start font-normal"
-                                            >
-                                                This weekend
-                                                <span className="ml-auto text-muted-foreground">
-                                                    {format(
-                                                        nextSaturday(today),
-                                                        "E, h:m b"
-                                                    )}
-                                                </span>
-                                            </Button>
-                                            <Button
-                                                variant="ghost"
-                                                className="justify-start font-normal"
-                                            >
-                                                Next week
-                                                <span className="ml-auto text-muted-foreground">
-                                                    {format(
-                                                        addDays(today, 7),
-                                                        "E, h:m b"
-                                                    )}
-                                                </span>
-                                            </Button>
-                                        </div>
-                                    </div>
+                                    )}
                                     <div className="p-2">
                                         <Calendar />
                                     </div>
@@ -241,11 +251,6 @@ export function MailDisplay({ mail, viewPort }: MailDisplayProps) {
                         <DropdownMenuItem>Mute thread</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-                {viewPort !== "mobile" && (
-                    <div className="ml-4">
-                        <ModeToggle />
-                    </div>
-                )}
             </div>
 
             <Separator />

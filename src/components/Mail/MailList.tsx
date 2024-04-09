@@ -1,10 +1,12 @@
+"use client"
+
 import { ComponentProps } from "react"
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { MyMail } from "@/components/mail/data"
-import { useMail } from "@/components/mail/use-mail"
+import { MyMail } from "@/components/Mail/data"
+import { useMail } from "@/components/Mail/use-mail"
 
 interface MailListProps {
     items: MyMail[]

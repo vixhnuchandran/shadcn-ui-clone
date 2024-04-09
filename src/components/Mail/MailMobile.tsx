@@ -1,7 +1,9 @@
+"use client"
+
 import * as React from "react"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { AccountSwitcher } from "@/components/mail/AccountSwitcher"
-import { Nav } from "@/components/mail/Nav"
+import { AccountSwitcher } from "@/components/Mail/AccountSwitcher"
+import { Nav } from "@/components/Mail/Nav"
 import {
     ResizablePanel,
     ResizablePanelGroup,
@@ -19,10 +21,10 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
-import { MailList } from "@/components/mail/MailList"
-import { MailDisplay } from "@/components/mail/MailDisplay"
-import { useMail } from "@/components/mail/use-mail"
-import { type MyMail } from "@/components/mail/data"
+import { MailList } from "@/components/Mail/MailList"
+import { MailDisplay } from "@/components/Mail/MailDisplay"
+import { useMail } from "@/components/Mail/use-mail"
+import { type MyMail } from "@/components/Mail/data"
 
 import {
     Inbox,
@@ -39,7 +41,6 @@ import {
     Menu,
     Mail,
 } from "lucide-react"
-import { ModeToggle } from "@/components/mode-toggle"
 
 interface MailProps {
     accounts: {
@@ -209,9 +210,6 @@ export function MobileLayout({ accounts, mails }: MailProps) {
                                     Unread
                                 </TabsTrigger>
                             </TabsList>
-                            <div className="flex justify-end pl-2 ">
-                                <ModeToggle />
-                            </div>
                         </div>
 
                         <Separator />
@@ -226,7 +224,7 @@ export function MobileLayout({ accounts, mails }: MailProps) {
                                 </div>
                             </form>
                         </div>
-                        <TabsContent value="all" className="m-0 realtive">
+                        <TabsContent value="all" className="m-0 relative">
                             <MailList items={mails} viewPort="mobile" />
                         </TabsContent>
                         <TabsContent value="unread" className="m-0">
@@ -244,6 +242,7 @@ export function MobileLayout({ accounts, mails }: MailProps) {
                                 mails.find(item => item.id === mail.selected) ||
                                 null
                             }
+                            viewPort="mobile"
                         />
                     </ResizablePanel>
                 </ResizablePanel>

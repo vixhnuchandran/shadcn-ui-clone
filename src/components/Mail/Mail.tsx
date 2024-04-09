@@ -1,7 +1,6 @@
 "use client"
 
-import * as React from "react"
-
+import { useState } from "react"
 import {
     AlertCircle,
     Archive,
@@ -26,14 +25,17 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { AccountSwitcher } from "@/components/mail/AccountSwitcher"
-import { MailDisplay } from "@/components/mail/MailDisplay"
-import { MailList } from "@/components/mail/MailList"
-import { Nav } from "@/components/mail/Nav"
-import { type MyMail } from "@/components/mail/data"
-import { useMail } from "@/components/mail/use-mail"
+
+import { AccountSwitcher } from "@/components/Mail/AccountSwitcher"
+import { MailDisplay } from "@/components/Mail/MailDisplay"
+import { MailList } from "@/components/Mail/MailList"
+import { Nav } from "@/components/Mail/Nav"
+import { type MyMail } from "@/components/Mail/data"
+import { useMail } from "@/components/Mail/use-mail"
+
 import { useWindowWidth } from "@react-hook/window-size"
-import { MobileLayout } from "./MobileLayout"
+import { MobileLayout } from "./MailMobile"
+import React from "react"
 
 interface MailProps {
     accounts: {
@@ -54,7 +56,7 @@ export function Mail({
     defaultCollapsed = false,
     navCollapsedSize,
 }: MailProps) {
-    const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed)
+    const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed)
     const [mail] = useMail()
     const screenWidth = useWindowWidth()
 
@@ -68,7 +70,7 @@ export function Mail({
                             sizes
                         )}`
                     }}
-                    className="h-full max-h-[850px] items-stretch "
+                    className="h-full max-h-[837px] items-stretch "
                 >
                     <ResizablePanel
                         defaultSize={defaultLayout[0]}
