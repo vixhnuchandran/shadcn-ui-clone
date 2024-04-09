@@ -11,7 +11,10 @@ export default function Authentication() {
                 <Link
                     to="#"
                     className={cn(
-                        buttonVariants({ variant: "ghost" }),
+                        buttonVariants({
+                            variant: "ghost",
+                            className: "justi"
+                        }),
                         "absolute right-4 top-4 md:right-8 md:top-8"
                     )}
                 >
