@@ -14,13 +14,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import MailUI from "@/components/Mail"
 import CardsUI from "@/components/Cards/Cards"
 import AuthUI from "@/components/Authentication"
+import FormUI from "@/components/Forms"
+
 import { ModeToggle } from "@/components/mode-toggle"
 
 function HomePage() {
     const screenWidth = useWindowWidth()
 
     return (
-        <div className=" ">
+        <div className="overflow-x-hidden ">
             <Tabs defaultValue="mail" className="mt-1">
                 {/* for mobile devices */}
                 {screenWidth <= 768 && (
@@ -49,7 +51,7 @@ function HomePage() {
                         <TabsTrigger value="authentication">
                             <Fingerprint size={18} />
                         </TabsTrigger>
-                        <div className=" p-2 ">
+                        <div className=" flex p-2 ">
                             <ModeToggle />
                         </div>
                     </TabsList>
@@ -82,7 +84,17 @@ function HomePage() {
                 </TabsContent>
                 <TabsContent value="tasks">Tasks</TabsContent>
                 <TabsContent value="playground">Playground</TabsContent>
-                <TabsContent value="forms">Forms</TabsContent>
+
+                {screenWidth <= 768 ? (
+                    <TabsContent value="forms">
+                        <FormUI viewPort={"mobile"} />
+                    </TabsContent>
+                ) : (
+                    <TabsContent value="forms" className="">
+                        <FormUI />
+                    </TabsContent>
+                )}
+
                 <TabsContent value="music">Music</TabsContent>
                 <TabsContent value="authentication">
                     <AuthUI />
