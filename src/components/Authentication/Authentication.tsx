@@ -34,7 +34,7 @@ export default function Authentication() {
                         </svg>
                         Acme Inc
                     </div>
-                    <div className="relative z-20 mt-auto">
+                    <div className="relative z-20 mt-auto text-left">
                         <blockquote className="space-y-2">
                             <p className="text-lg">
                                 &ldquo;This library has saved me countless hours
