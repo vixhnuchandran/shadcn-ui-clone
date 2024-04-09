@@ -1,55 +1,95 @@
-import { useState, useEffect } from "react"
-import { Mail } from "@/components/mail/Mail"
-import { accounts, mails } from "@/components/mail/data"
+import { useWindowWidth } from "@react-hook/window-size"
+import {
+    Mail,
+    CircleGauge,
+    WalletCards,
+    ListTodo,
+    SquarePlay,
+    BookText,
+    Music,
+    Fingerprint,
+} from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export default function MailPage() {
-    const [defaultLayout, setDefaultLayout] = useState<number[] | undefined>(
-        undefined
-    )
-    const [defaultCollapsed, setDefaultCollapsed] = useState<
-        boolean | undefined
-    >(undefined)
+import MailUI from "@/components/Mail"
+import CardsUI from "@/components/Cards/Cards"
+import AuthUI from "@/components/Authentication"
+import { ModeToggle } from "@/components/mode-toggle"
 
-    useEffect(() => {
-        const getCookieValue = (cookieName: string) => {
-            const cookies = document.cookie.split(";")
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim()
-                if (cookie.startsWith(cookieName + "=")) {
-                    return cookie.substring(cookieName.length + 1)
-                }
-            }
-            return null
-        }
-
-        const collapsedCookieValue = getCookieValue(
-            "react-resizable-panels:collapsed"
-        )
-        if (collapsedCookieValue) {
-            const parsedCollapsed = collapsedCookieValue === "true"
-            setDefaultCollapsed(parsedCollapsed)
-        }
-
-        const layoutCookieValue = getCookieValue(
-            "react-resizable-panels:layout"
-        )
-        if (layoutCookieValue) {
-            const parsedLayout = JSON.parse(layoutCookieValue) as number[]
-            setDefaultLayout(parsedLayout)
-        }
-    }, [])
+function HomePage() {
+    const screenWidth = useWindowWidth()
 
     return (
-        <>
-            <div className="flex-col md:flex m-0 h-fit w-fit border rounded-lg ">
-                <Mail
-                    accounts={accounts}
-                    mails={mails}
-                    defaultLayout={defaultLayout}
-                    defaultCollapsed={defaultCollapsed}
-                    navCollapsedSize={4}
-                />
-            </div>
-        </>
+        <div className=" ">
+            <Tabs defaultValue="mail" className="mt-1">
+                {/* for mobile devices */}
+                {screenWidth <= 768 && (
+                    <TabsList>
+                        <TabsTrigger value="mail">
+                            <Mail size={18} />
+                        </TabsTrigger>
+                        <TabsTrigger value="dashboard">
+                            <CircleGauge size={18} />
+                        </TabsTrigger>
+                        <TabsTrigger value="cards">
+                            <WalletCards size={18} />
+                        </TabsTrigger>
+                        <TabsTrigger value="tasks">
+                            <ListTodo size={18} />
+                        </TabsTrigger>
+                        <TabsTrigger value="playground">
+                            <SquarePlay size={18} />
+                        </TabsTrigger>
+                        <TabsTrigger value="forms">
+                            <BookText size={18} />
+                        </TabsTrigger>
+                        <TabsTrigger value="music">
+                            <Music size={18} />
+                        </TabsTrigger>
+                        <TabsTrigger value="authentication">
+                            <Fingerprint size={18} />
+                        </TabsTrigger>
+                        <div className=" p-2 ">
+                            <ModeToggle />
+                        </div>
+                    </TabsList>
+                )}
+                {/* for desktop */}
+                {screenWidth > 768 && (
+                    <TabsList>
+                        <TabsTrigger value="mail">Mail</TabsTrigger>
+                        <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+                        <TabsTrigger value="cards">Cards</TabsTrigger>
+                        <TabsTrigger value="tasks">Tasks</TabsTrigger>
+                        <TabsTrigger value="playground">Playground</TabsTrigger>
+                        <TabsTrigger value="forms">Forms</TabsTrigger>
+                        <TabsTrigger value="music">Music</TabsTrigger>
+                        <TabsTrigger value="authentication">
+                            Authentication
+                        </TabsTrigger>
+                        <div className="p-2 ">
+                            <ModeToggle />
+                        </div>
+                    </TabsList>
+                )}
+
+                <TabsContent value="mail">
+                    <MailUI />
+                </TabsContent>
+                <TabsContent value="dashboard">Dashboard</TabsContent>
+                <TabsContent value="cards">
+                    <CardsUI />
+                </TabsContent>
+                <TabsContent value="tasks">Tasks</TabsContent>
+                <TabsContent value="playground">Playground</TabsContent>
+                <TabsContent value="forms">Forms</TabsContent>
+                <TabsContent value="music">Music</TabsContent>
+                <TabsContent value="authentication">
+                    <AuthUI />
+                </TabsContent>
+            </Tabs>
+        </div>
     )
 }
+
+export default HomePage
