@@ -13,7 +13,7 @@ interface Task {
 }
 
 async function getTasks() {
-  const response = await fetch("/src/components/Tasks/data/data.tsx")
+  const response = await fetch("/src/components/Tasks/data/tasks.json")
   const data = await response.json()
   return data
 }
@@ -24,7 +24,6 @@ function Task() {
   useEffect(() => {
     async function fetchData() {
       const tasksData = await getTasks()
-      console.log("Fetched tasks:", tasksData)
       setTasks(tasksData)
     }
     fetchData()
@@ -32,7 +31,7 @@ function Task() {
 
   return (
     <>
-      <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className=" h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
