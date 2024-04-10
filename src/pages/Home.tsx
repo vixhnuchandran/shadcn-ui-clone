@@ -17,8 +17,10 @@ import AuthUI from "@/components/Authentication"
 import FormUI from "@/components/Forms"
 import MusicUI from "@/components/Music"
 import DashboardUI from "@/components/Dashboard"
+import TasksUI from "@/components/Tasks"
 
 import { ModeToggle } from "@/components/mode-toggle"
+import PlaygroundUI from "@/components/Playground"
 
 function HomePage() {
   const screenWidth = useWindowWidth()
@@ -84,8 +86,12 @@ function HomePage() {
         <TabsContent value="cards">
           <CardsUI />
         </TabsContent>
-        <TabsContent value="tasks">Tasks</TabsContent>
-        <TabsContent value="playground">Playground</TabsContent>
+        <TabsContent value="tasks">
+          <TasksUI />
+        </TabsContent>
+        <TabsContent value="playground">
+          <PlaygroundUI />
+        </TabsContent>
 
         {screenWidth <= 768 ? (
           <TabsContent value="forms">
