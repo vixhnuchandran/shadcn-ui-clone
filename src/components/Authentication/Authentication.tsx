@@ -13,7 +13,7 @@ export default function Authentication() {
                     className={cn(
                         buttonVariants({
                             variant: "ghost",
-                            className: "justi"
+                            className: "justi",
                         }),
                         "absolute right-4 top-4 md:right-8 md:top-8"
                     )}
