@@ -11,8 +11,8 @@ import {
 } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-import MailUI from "@/components/Mail"
-import CardsUI from "@/components/Cards/Cards"
+import MailUI from "@/components/Mail/index"
+import CardsUI from "@/components/Cards"
 import AuthUI from "@/components/Authentication"
 import FormUI from "@/components/Forms"
 import MusicUI from "@/components/Music"
