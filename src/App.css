@@ -48,6 +48,15 @@
     font-weight: 100 900;
 }
 
+@font-face {
+    font-family: "Fallback-GeistFont";
+    src: url("/fonts/fallbackFont.woff2") format("woff2");
+    ascent-override: 90.59%;
+    descent-override: 21.66%;
+    line-gap-override: 9.85%;
+    size-adjust: 101.56%;
+}
+
 body {
-    font-family: "Geist-Sans";
+    font-family: "Geist-Sans", "Fallback-GeistFont", Arial, sans-serif;
 }
