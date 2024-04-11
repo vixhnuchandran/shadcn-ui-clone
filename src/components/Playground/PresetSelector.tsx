@@ -12,6 +12,7 @@ import {
     CommandGroup,
     CommandInput,
     CommandItem,
+    CommandList,
 } from "@/components/ui/command"
 import {
     Popover,
@@ -46,31 +47,34 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
             <PopoverContent className="w-[300px] p-0">
                 <Command>
                     <CommandInput placeholder="Search presets..." />
-                    <CommandEmpty>No presets found.</CommandEmpty>
-                    <CommandGroup heading="Examples">
-                        {presets.map(preset => (
-                            <CommandItem
-                                key={preset.id}
-                                onSelect={() => {
-                                    setSelectedPreset(preset)
-                                    setOpen(false)
-                                }}
-                            >
-                                {preset.name}
-                                <CheckIcon
-                                    className={cn(
-                                        "ml-auto h-4 w-4",
-                                        selectedPreset?.id === preset.id
-                                            ? "opacity-100"
-                                            : "opacity-0"
-                                    )}
-                                />
-                            </CommandItem>
-                        ))}
-                    </CommandGroup>
-                    <CommandGroup className="pt-0">
-                        <CommandItem>More examples</CommandItem>
-                    </CommandGroup>
+                    <CommandList>
+                        <CommandEmpty>No presets found.</CommandEmpty>
+                        <CommandGroup heading="Examples">
+                            {presets.map(preset => (
+                                <CommandItem
+                                    key={preset.id}
+                                    onSelect={() => {
+                                        setSelectedPreset(preset)
+                                        setOpen(false)
+                                    }}
+                                >
+                                    {preset.name}
+                                    <CheckIcon
+                                        className={cn(
+                                            "ml-auto h-4 w-4",
+                                            selectedPreset?.id === preset.id
+                                                ? "opacity-100"
+                                                : "opacity-0"
+                                        )}
+                                    />
+                                </CommandItem>
+                            ))}
+                        </CommandGroup>
+
+                        <CommandGroup className="pt-0">
+                            <CommandItem>More examples</CommandItem>
+                        </CommandGroup>
+                    </CommandList>
                 </Command>
             </PopoverContent>
         </Popover>
