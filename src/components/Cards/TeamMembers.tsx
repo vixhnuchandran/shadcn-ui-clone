@@ -121,8 +121,8 @@ function TeamMembers() {
                                 <CommandInput placeholder="Select new role..." />
                                 <CommandList>
                                     <CommandEmpty>No roles found.</CommandEmpty>
-                                    <CommandGroup className="p-1.5">
-                                        <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
+                                    <CommandGroup className="p-1.5 opacity-100">
+                                        <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2 ">
                                             <p>Viewer</p>
                                             <p className="text-sm text-muted-foreground">
                                                 Can view and comment.

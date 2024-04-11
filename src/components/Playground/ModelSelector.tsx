@@ -150,7 +150,7 @@ function ModelItem({ model, isSelected, onSelect }: ModelItemProps) {
             key={model.id}
             onSelect={onSelect}
             ref={ref}
-            className="aria-selected:bg-primary aria-selected:text-primary-foreground"
+            className="aria-selected:bg-primary aria-selected:text-primary-foreground "
         >
             {model.name}
             <CheckIcon

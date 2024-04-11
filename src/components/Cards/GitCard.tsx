@@ -1,6 +1,7 @@
 "use client"
 
-import { ChevronDownIcon, Circle, PlusIcon, StarIcon } from "lucide-react"
+import { CircleIcon } from "@radix-ui/react-icons"
+import { ChevronDownIcon, PlusIcon, StarIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -78,7 +79,7 @@ function GitCard() {
             <CardContent>
                 <div className="flex space-x-4 text-sm text-muted-foreground">
                     <div className="flex items-center">
-                        <Circle className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
+                        <CircleIcon className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
                         TypeScript
                     </div>
                     <div className="flex items-center">

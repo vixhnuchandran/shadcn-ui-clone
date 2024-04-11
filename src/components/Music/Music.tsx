@@ -15,10 +15,10 @@ interface MusicProps {
     viewPort?: string
 }
 
-const Music: React.FC<MusicProps> = () => {
+const Music: React.FC<MusicProps> = ({ viewPort }) => {
     return (
         <>
-            <div className=" md:block text-left">
+            <div className="md:relative text-left">
                 <Menu />
                 <div className="border-t">
                     <div className="bg-background">
@@ -28,18 +28,15 @@ const Music: React.FC<MusicProps> = () => {
                                 className="hidden lg:block"
                             />
 
-                            <div className="col-span-3 lg:col-span-4 lg:border-l">
-                                <div className="h-full px-4 py-6 lg:px-8">
+                            <div className="col-span-3 lg:col-span-4 lg:border-l lg:block">
+                                <div className=" px-4 py-6 lg:px-8">
                                     <Tabs
                                         defaultValue="music"
-                                        className="h-full space-y-6"
+                                        className=" space-y-6"
                                     >
-                                        <div className="space-between flex items-center">
+                                        <div className="justify-between flex items-center">
                                             <TabsList>
-                                                <TabsTrigger
-                                                    value="music"
-                                                    className="relative"
-                                                >
+                                                <TabsTrigger value="music">
                                                     Music
                                                 </TabsTrigger>
                                                 <TabsTrigger value="podcasts">
@@ -52,13 +49,23 @@ const Music: React.FC<MusicProps> = () => {
                                                     Live
                                                 </TabsTrigger>
                                             </TabsList>
-                                            <div className="ml-auto mr-4">
+                                            <div className=" mr-4">
                                                 <Button>
-                                                    <PlusCircledIcon className="mr-2 h-4 w-4" />
-                                                    Add music
+                                                    <PlusCircledIcon className=" lg:mr-2 h-4 w-4" />
+                                                    <span
+                                                        className={
+                                                            viewPort ===
+                                                            "mobile"
+                                                                ? "hidden"
+                                                                : ""
+                                                        }
+                                                    >
+                                                        Add music
+                                                    </span>
                                                 </Button>
                                             </div>
                                         </div>
+
                                         <TabsContent
                                             value="music"
                                             className="border-none p-0 outline-none"
@@ -76,7 +83,7 @@ const Music: React.FC<MusicProps> = () => {
                                             </div>
                                             <Separator className="my-4" />
                                             <div className="relative">
-                                                <ScrollArea>
+                                                <ScrollArea className="min-w-[300px]">
                                                     <div className="flex space-x-4 pb-4">
                                                         {listenNowAlbums.map(
                                                             album => (
@@ -87,7 +94,12 @@ const Music: React.FC<MusicProps> = () => {
                                                                     album={
                                                                         album
                                                                     }
-                                                                    className="w-[250px]"
+                                                                    className={
+                                                                        viewPort ===
+                                                                        "mobile"
+                                                                            ? "w-[80px]"
+                                                                            : "w-[250px]"
+                                                                    }
                                                                     aspectRatio="portrait"
                                                                     width={250}
                                                                     height={330}
@@ -120,7 +132,12 @@ const Music: React.FC<MusicProps> = () => {
                                                                     album={
                                                                         album
                                                                     }
-                                                                    className="w-[150px]"
+                                                                    className={
+                                                                        viewPort ===
+                                                                        "mobile"
+                                                                            ? "w-[80px]"
+                                                                            : "w-[150px]"
+                                                                    }
                                                                     aspectRatio="square"
                                                                     width={150}
                                                                     height={150}

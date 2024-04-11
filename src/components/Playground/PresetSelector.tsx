@@ -31,13 +31,13 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
 
     return (
         <Popover open={open} onOpenChange={setOpen} {...props}>
-            <PopoverTrigger asChild>
+            <PopoverTrigger asChild className="flex justify-between">
                 <Button
                     variant="outline"
                     role="combobox"
                     aria-label="Load a preset..."
                     aria-expanded={open}
-                    className="flex-1 text-left md:max-w-[200px] lg:max-w-[300px]"
+                    className="flex-1  md:max-w-[200px] lg:max-w-[300px]"
                 >
                     {selectedPreset ? selectedPreset.name : "Load a preset..."}
                     <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -69,9 +69,7 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
                         ))}
                     </CommandGroup>
                     <CommandGroup className="pt-0">
-                        <CommandItem onClick={() => {}}>
-                            More examples
-                        </CommandItem>
+                        <CommandItem>More examples</CommandItem>
                     </CommandGroup>
                 </Command>
             </PopoverContent>

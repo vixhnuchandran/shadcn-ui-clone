@@ -105,9 +105,16 @@ function HomePage() {
                     </TabsContent>
                 )}
 
-                <TabsContent value="music">
-                    <MusicUI />
-                </TabsContent>
+                {screenWidth <= 768 ? (
+                    <TabsContent value="music">
+                        <MusicUI viewPort={"mobile"} />
+                    </TabsContent>
+                ) : (
+                    <TabsContent value="music">
+                        <MusicUI />
+                    </TabsContent>
+                )}
+
                 <TabsContent value="authentication">
                     <AuthUI />
                 </TabsContent>
