@@ -142,7 +142,7 @@ interface ModelItemProps {
     onPeek: (model: Model) => void
 }
 
-function ModelItem({ model, isSelected, onSelect }: ModelItemProps) {
+function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
     const ref = React.useRef<HTMLDivElement>(null)
 
     return (
@@ -150,7 +150,8 @@ function ModelItem({ model, isSelected, onSelect }: ModelItemProps) {
             key={model.id}
             onSelect={onSelect}
             ref={ref}
-            className="aria-selected:bg-primary aria-selected:text-primary-foreground "
+            className="aria-selected:bg-primary aria-selected:text-primary-foreground"
+            onMouseEnter={() => onPeek(model)} // Trigger onPeek when hovering
         >
             {model.name}
             <CheckIcon
