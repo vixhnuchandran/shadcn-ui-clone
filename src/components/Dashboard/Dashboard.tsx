@@ -93,7 +93,7 @@ export default function Dashboard() {
                                             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                                         </svg>
                                     </CardHeader>
-                                    ./
+
                                     <CardContent>
                                         <div className="text-2xl font-bold">
                                             $45,231.89
