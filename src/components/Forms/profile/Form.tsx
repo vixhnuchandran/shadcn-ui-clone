@@ -25,7 +25,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast"
 
 const profileFormSchema = z.object({
     username: z
@@ -63,6 +63,8 @@ const defaultValues: Partial<ProfileFormValues> = {
 }
 
 export function ProfileForm() {
+    const { toast } = useToast()
+
     const form = useForm<ProfileFormValues>({
         resolver: zodResolver(profileFormSchema),
         defaultValues,
@@ -78,8 +80,8 @@ export function ProfileForm() {
         toast({
             title: "You submitted the following values:",
             description: (
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">
+                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4 text-left">
+                    <code className="text-white items-start text-left p-0 m-0 ">
                         {JSON.stringify(data, null, 2)}
                     </code>
                 </pre>
