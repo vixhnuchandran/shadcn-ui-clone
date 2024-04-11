@@ -128,6 +128,7 @@ export function PresetActions() {
                                 toast({
                                     description:
                                         "This preset has been deleted.",
+                                    className: "text-left",
                                 })
                             }}
                         >
